@@ -1,7 +1,12 @@
 ---
-- name: Install Nginx
-  yum:
-    name=nginx
-    state=latest
-  notify:
-    - nginx systemd
+- name: nginx
+  docker_container:
+    name: nginx
+    hostname: nginx
+    state: started
+    image: "nginx"
+    pull: true
+    ports:
+      - "8085:80"    
+    networks:
+      - name: project
