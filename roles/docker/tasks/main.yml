@@ -1,0 +1,37 @@
+---
+- name: install yum-utils
+  become: true
+  yum:
+    name: yum-utils
+    state: present
+
+- name: install docker repository
+  command:  yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+- name: install docker
+  become: true
+  yum:
+    name: docker-ce-3:18.09.0-3.el7
+    state: present
+
+- name: enable docker
+  service: 
+    enabled=yes 
+    name=docker
+
+- name: start docker
+  service:
+    name=docker
+    state=restarted
+
+- name: install python2
+  become: true  
+  yum:
+    name: python2
+    state: present
+
+- name: install python docker-py
+  become: true
+  pip:
+    name: docker-py
+    state: present

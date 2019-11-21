@@ -1,0 +1,39 @@
+---
+- name: network
+  become: true
+  docker_network:
+    name: project
+    state: present
+- name: web_1
+  docker_container:
+    name: web_1
+    hostname: web_1
+    state: started
+    image: "irakholla/jen_web:web"
+    pull: true
+    ports:
+      - "5001:5001"
+    networks:
+      - name: project
+- name: web_2
+  docker_container:
+    name: web_2
+    hostname: web_2
+    state: started
+    image: "irakholla/jen_web:web"
+    pull: true
+    ports:
+      - "5002:5001"
+    networks:
+      - name: project
+- name: web_3
+  docker_container:
+    name: web_3
+    hostname: web_3
+    state: started
+    image: "irakholla/jen_web:web"
+    pull: true
+    ports:
+      - "5003:5001"
+    networks:
+      - name: project
