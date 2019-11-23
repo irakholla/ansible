@@ -1,0 +1,7 @@
+- name: docker_g_role
+  src: git+https://github.com/irakholla/docker_role.git
+- name: web_g_role
+  src: git+https://github.com/irakholla/web_role.git
+- name: nginx_g_role 
+  src: git+https://github.com/irakholla/nginx_role.git
+  
