@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("ansible") {
             steps {
-                ansiblePlaybook(playbook: 'playbook.yml', inventory: 'hosts')
+                ansiblePlaybook(playbook: 'plroject.yml', inventory: 'hosts')
             }          
         }        
     }
